@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class BankUTest {
 
@@ -34,5 +35,14 @@ class BankUTest {
         bank.deposit(user, depositedAmount);
 
         assertThat(bank.getBalance(user)).isEqualTo(depositedAmount);
+    }
+
+    @Test
+    void deposit_should_throw_exception_when_amount_is_negative() {
+        final User user = new User();
+
+        final Throwable throwable = catchThrowable(() -> bank.deposit(user, -600f));
+
+        assertThat(throwable).isEqualToComparingFieldByField(new RuntimeException("Negative amount"));
     }
 }

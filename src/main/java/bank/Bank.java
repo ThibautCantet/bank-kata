@@ -4,10 +4,16 @@ import java.util.HashMap;
 
 public class Bank {
 
-    private HashMap<User, Float> userBalance;
+    private final HashMap<User, Float> userBalance;
+
+    public Bank() {
+        userBalance = new HashMap<>();
+    }
 
     public void deposit(User user, Float depositedAmount) {
-        userBalance = new HashMap<>();
+        if (depositedAmount < 0) {
+            throw new RuntimeException("Negative amount");
+        }
         userBalance.putIfAbsent(user, depositedAmount);
     }
 
