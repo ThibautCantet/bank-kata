@@ -11,6 +11,12 @@ public class Bank {
     }
 
     public void deposit(AccountId accountId, Float depositedAmount) {
+        if (depositedAmount == null) {
+            throw new RuntimeException("Null amount");
+        }
+        if (accountId == null) {
+            throw new RuntimeException("Null account id");
+        }
         if (depositedAmount < 0) {
             throw new RuntimeException("Negative amount");
         }
