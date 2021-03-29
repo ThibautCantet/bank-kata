@@ -2,6 +2,7 @@ package bank;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 public class Bank {
@@ -42,10 +43,23 @@ public class Bank {
     public String printStatement(AccountId accountId) {
         final Account account = findAccountById(accountId);
         final String lines = account.getAllMovements().stream()
-                .map(movement -> movement.getTime() + "   +" + movement.getAmount() + "      500")
+                .map(movement -> buildCurrentBalance(movement, account.getAllMovements()))
                 .reduce("", (s1, s2) -> s1 + "\n" + s2);
 
-        return "Date        Amount  Balance"+lines;
+        return "Date        Amount  Balance" + lines;
+    }
+
+    private String buildCurrentBalance(Movement currentMovement, List<Movement> allMovements) {
+        final Float currentBalance = allMovements.stream()
+                .filter(movement -> isBeforeOrEqual(currentMovement, movement))
+                .map(Movement::getAmount)
+                .reduce(Float::sum)
+                .orElse(0f);
+        return currentMovement.getTime() + "   +" + currentMovement.getAmount() + "      " + currentBalance;
+    }
+
+    private boolean isBeforeOrEqual(Movement currentMovement, Movement movement) {
+        return movement.getTime().isBefore(currentMovement.getTime()) || movement.getTime().isEqual(currentMovement.getTime());
     }
 
     private Account findAccountById(AccountId accountId) {

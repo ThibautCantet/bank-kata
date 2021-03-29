@@ -120,16 +120,21 @@ class BankUTest {
     class PrintStatement {
         @Test
         void should_print_deposit_history() {
-            bank.deposit(accountId, 500f, clock);
-
-            clock = Clock.fixed(LocalDateTime.of(2021, 3, 22, 1, 50, 2).toInstant(UTC), UTC);
-            bank.deposit(accountId, 600f, clock);
+            account.add(new Movement(LocalDateTime.of(2021, 3, 22, 1, 50, 1), 500f));
+            account.add(new Movement(LocalDateTime.of(2021, 3, 22, 1, 50, 2), 600f));
 
             String result = bank.printStatement(accountId);
 
             assertThat(result).isEqualTo("Date        Amount  Balance\n" +
-                    "2021-03-22T01:50:01   +500.0      500\n" +
-                    "2021-03-22T01:50:02   +600.0      500");
+                    "2021-03-22T01:50:01   +500.0      500.0\n" +
+                    "2021-03-22T01:50:02   +600.0      1100.0");
+        }
+
+        @Test
+        void should_print_deposit_history_when_no_movement() {
+            String result = bank.printStatement(accountId);
+
+            assertThat(result).isEqualTo("Date        Amount  Balance");
         }
     }
 }
