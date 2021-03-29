@@ -5,8 +5,10 @@ import java.util.List;
 
 public class Account {
     private final List<Movement> movements;
+    private final AccountId accountId;
 
-    public Account() {
+    public Account(AccountId accountId) {
+        this.accountId = accountId;
         movements = new ArrayList<>();
     }
 
@@ -21,5 +23,9 @@ public class Account {
 
     public List<Movement> getAllMovements() {
         return movements;
+    }
+
+    public AccountId getAccountId() {
+        return accountId;
     }
 }

@@ -2,14 +2,14 @@ package bank;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.util.HashMap;
+import java.util.Optional;
 
 public class Bank {
 
-    private final HashMap<AccountId, Account> userBalance;
+    private final AccountRepository accountRepository;
 
-    public Bank() {
-        userBalance = new HashMap<>();
+    public Bank(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     public void deposit(AccountId accountId, Float depositedAmount, Clock clock) {
@@ -22,23 +22,31 @@ public class Bank {
         if (depositedAmount < 0) {
             throw new RuntimeException("Negative amount");
         }
+        final Optional<Account> optionalAccount = accountRepository.findById(accountId);
+        if (!optionalAccount.isPresent()) {
+            throw new RuntimeException("Account id doesn't exist");
+        }
         final Movement movement = new Movement(LocalDateTime.now(clock), depositedAmount);
-        final Account account = userBalance.getOrDefault(accountId, new Account());
+        final Account account = optionalAccount.get();
         account.add(movement);
-        userBalance.putIfAbsent(accountId, account);
     }
 
     public Float getBalance(AccountId accountId) {
-        final Account account = userBalance.get(accountId);
+        final Account account = findAccountById(accountId);
         return account.getLastMovement();
     }
 
     public String printStatement(AccountId accountId) {
-        final Account account = userBalance.get(accountId);
+        final Account account = findAccountById(accountId);
         final String lines = account.getAllMovements().stream()
                 .map(movement -> movement.getTime() + "   +" + movement.getAmount() + "      500")
                 .reduce("", (s1, s2) -> s1 + "\n" + s2);
 
         return "Date        Amount  Balance"+lines;
+    }
+
+    private Account findAccountById(AccountId accountId) {
+        final Optional<Account> optionalAccount = accountRepository.findById(accountId);
+        return optionalAccount.get();
     }
 }
