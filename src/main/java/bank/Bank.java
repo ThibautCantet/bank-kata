@@ -32,6 +32,25 @@ public class Bank {
         account.add(movement);
     }
 
+    public void withdraw(AccountId accountId, Float withdrawnAmount, Clock clock) {
+        if (withdrawnAmount == null) {
+            throw new RuntimeException("Null amount");
+        }
+        if (accountId == null) {
+            throw new RuntimeException("Null account id");
+        }
+        if (withdrawnAmount < 0) {
+            throw new RuntimeException("Negative amount");
+        }
+        final Optional<Account> optionalAccount = accountRepository.findById(accountId);
+        if (!optionalAccount.isPresent()) {
+            throw new RuntimeException("Account id doesn't exist");
+        }
+        final Movement movement = new Movement(LocalDateTime.now(clock), -withdrawnAmount);
+        final Account account = optionalAccount.get();
+        account.add(movement);
+    }
+
     public Float getBalance(AccountId accountId) {
         final Account account = findAccountById(accountId);
         return account.getAllMovements().stream()

@@ -117,6 +117,66 @@ class BankUTest {
     }
 
     @Nested
+    class Withdraw {
+
+        @Nested
+        class WhenAccountExists {
+
+            @Test
+            void should_add_movement_with_deposited_amount_equal_to_500() {
+                Float withdrawnAmount = 500f;
+
+                bank.withdraw(accountId, withdrawnAmount, clock);
+
+                final Movement expectedMovement = new Movement(LocalDateTime.now(clock), -withdrawnAmount);
+                assertThat(accountRepository.userBalance.get(accountId).getAllMovements()).usingRecursiveFieldByFieldElementComparator().containsExactly(expectedMovement);
+            }
+
+            @Test
+            void should_add_movement_with_withdrawn_amount_equal_to_600() {
+                Float withdrawnAmount = 600f;
+
+                bank.withdraw(accountId, withdrawnAmount, clock);
+
+                final Movement expectedMovement = new Movement(LocalDateTime.now(clock), -withdrawnAmount);
+                assertThat(accountRepository.userBalance.get(accountId).getAllMovements()).usingRecursiveFieldByFieldElementComparator().containsExactly(expectedMovement);
+            }
+
+            @Test
+            void should_throw_exception_when_amount_is_negative() {
+                final Throwable throwable = catchThrowable(() -> bank.withdraw(accountId, -600f, clock));
+
+                assertThat(throwable).isEqualToComparingFieldByField(new RuntimeException());
+                assertThat(throwable.getMessage()).isEqualTo("Negative amount");
+            }
+
+            @Test
+            void should_throw_exception_when_amount_is_null() {
+                final Throwable throwable = catchThrowable(() -> bank.withdraw(accountId, null, clock));
+
+                assertThat(throwable).isEqualToComparingFieldByField(new RuntimeException());
+                assertThat(throwable.getMessage()).isEqualTo("Null amount");
+            }
+
+            @Test
+            void should_throw_exception_when_accountId_is_null() {
+                final Throwable throwable = catchThrowable(() -> bank.withdraw(null, 10f, clock));
+
+                assertThat(throwable).isEqualToComparingFieldByField(new RuntimeException());
+                assertThat(throwable.getMessage()).isEqualTo("Null account id");
+            }
+        }
+
+        @Test
+        void should_throw_exception_when_accountId_doesnt_exist() {
+            final Throwable throwable = catchThrowable(() -> bank.withdraw(new AccountId(), 10f, clock));
+
+            assertThat(throwable).isEqualToComparingFieldByField(new RuntimeException());
+            assertThat(throwable.getMessage()).isEqualTo("Account id doesn't exist");
+        }
+    }
+
+    @Nested
     class PrintStatement {
         @Test
         void should_print_deposit_history() {
