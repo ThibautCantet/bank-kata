@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class InMemoryAccountRepository implements AccountRepository {
-    private final HashMap<AccountId, Account> userBalance;
+    public final HashMap<AccountId, Account> userBalance;
 
     public InMemoryAccountRepository() {
         userBalance = new HashMap<>();

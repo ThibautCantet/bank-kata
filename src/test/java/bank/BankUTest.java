@@ -20,7 +20,7 @@ class BankUTest {
     private AccountId accountId;
     private Account account;
 
-    private final AccountRepository accountRepository = new InMemoryAccountRepository();
+    private final InMemoryAccountRepository accountRepository = new InMemoryAccountRepository();
 
     private static final LocalDateTime NOW = LocalDateTime.of(2021, 3, 22, 1, 50, 1);
 
@@ -36,27 +36,50 @@ class BankUTest {
     }
 
     @Nested
+    class GetBalance {
+
+        @Test
+        void should_return_sum_of_all_account_movements() {
+            account.add(new Movement(LocalDateTime.now(clock), 600f));
+            account.add(new Movement(LocalDateTime.now(clock), 500f));
+
+            final Float balance = bank.getBalance(accountId);
+
+            assertThat(balance).isEqualTo(1100f);
+        }
+
+        @Test
+        void should_return_zero_when_account_has_no_movement() {
+            final Float balance = bank.getBalance(accountId);
+
+            assertThat(balance).isEqualTo(0f);
+        }
+    }
+
+    @Nested
     class Deposit {
 
         @Nested
-        class WhenAccountIdExist {
+        class WhenAccountExists {
 
             @Test
-            void should_update_user_balance_with_deposited_amount_equal_to_500() {
+            void should_add_movement_with_deposited_amount_equal_to_500() {
                 Float depositedAmount = 500f;
 
                 bank.deposit(accountId, depositedAmount, clock);
 
-                assertThat(bank.getBalance(accountId)).isEqualTo(depositedAmount);
+                final Movement expectedMovement = new Movement(LocalDateTime.now(clock), depositedAmount);
+                assertThat(accountRepository.userBalance.get(accountId).getAllMovements()).usingRecursiveFieldByFieldElementComparator().containsExactly(expectedMovement);
             }
 
             @Test
-            void should_update_user_balance_with_deposited_amount_equal_to_600() {
+            void should_add_movement_with_deposited_amount_equal_to_600() {
                 Float depositedAmount = 600f;
 
                 bank.deposit(accountId, depositedAmount, clock);
 
-                assertThat(bank.getBalance(accountId)).isEqualTo(depositedAmount);
+                final Movement expectedMovement = new Movement(LocalDateTime.now(clock), depositedAmount);
+                assertThat(accountRepository.userBalance.get(accountId).getAllMovements()).usingRecursiveFieldByFieldElementComparator().containsExactly(expectedMovement);
             }
 
             @Test

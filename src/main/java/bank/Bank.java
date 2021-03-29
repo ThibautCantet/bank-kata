@@ -33,7 +33,10 @@ public class Bank {
 
     public Float getBalance(AccountId accountId) {
         final Account account = findAccountById(accountId);
-        return account.getLastMovement();
+        return account.getAllMovements().stream()
+                .map(Movement::getAmount)
+                .reduce(Float::sum)
+                .orElse(0f);
     }
 
     public String printStatement(AccountId accountId) {
