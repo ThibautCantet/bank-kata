@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Prevoir
+namespace Bank.kata
 {
     public class Bank
     {

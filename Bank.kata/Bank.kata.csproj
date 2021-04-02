@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>Bank.kata</AssemblyName>
+        <RootNamespace>Bank.kata</RootNamespace>
     </PropertyGroup>
 
 </Project>

@@ -1,8 +1,8 @@
 using System;
-using Prevoir;
+
 using Xunit;
 
-namespace xTest
+namespace Bank.kata
 {
     public class GetBalance
     {

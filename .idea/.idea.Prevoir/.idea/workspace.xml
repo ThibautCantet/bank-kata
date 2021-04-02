@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="82696846-2822-47f4-9683-e843b4d0663a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/xTest/DepositWithMock.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xTest/GetBalanceWithStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prevoir.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Prevoir.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prevoir/Account.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Prevoir/Account.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prevoir/Bank.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Prevoir/Bank.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xTest/GetBalance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/xTest/GetBalance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xTest/xTest.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/xTest/xTest.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="82696846-2822-47f4-9683-e843b4d0663a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,13 +20,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB459DEC-1089-48A5-B911-622CFA5F50A8/04/9d61457d/Assert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/PrintStatement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/GetBalanceWithStub.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/thibautcantet/Dev/prevoir/Prevoir/Test/DepositTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/42ED81B8-4EA6-4A20-9C8A-62C83D9D73F9/4F/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/GetBalance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net5.0/Prevoir.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata/Account.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/Deposit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata/Bank.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata/Movement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/DepositWithMock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Bank.kata.xTest/Withdraw.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -46,17 +49,18 @@
       <option value="$PROJECT_DIR$/Test/DepositTest.cs" />
       <option value="$PROJECT_DIR$/xTest/UnitTest1.cs" />
       <option value="$PROJECT_DIR$/xTest/DepositTest.cs" />
-      <option value="$PROJECT_DIR$/Prevoir/InMemoryAccountRepository.cs" />
-      <option value="$PROJECT_DIR$/xTest/Withdraw.cs" />
-      <option value="$PROJECT_DIR$/xTest/Deposit.cs" />
       <option value="$PROJECT_DIR$/Prevoir/README.md" />
       <option value="$PROJECT_DIR$/xTest/PrintStatement.cs" />
       <option value="$PROJECT_DIR$/xTest/GetBalance.cs" />
-      <option value="$PROJECT_DIR$/Prevoir/Bank.cs" />
-      <option value="$PROJECT_DIR$/Prevoir/Account.cs" />
       <option value="$PROJECT_DIR$/xTest/GetBalanceWithSpy.cs" />
       <option value="$PROJECT_DIR$/xTest/GetBalanceWithStub.cs" />
+      <option value="$PROJECT_DIR$/Prevoir/IAccountRepository.cs" />
+      <option value="$PROJECT_DIR$/Prevoir/InMemoryAccountRepository.cs" />
       <option value="$PROJECT_DIR$/xTest/DepositWithMock.cs" />
+      <option value="$PROJECT_DIR$/xTest/Withdraw.cs" />
+      <option value="$PROJECT_DIR$/Prevoir/Account.cs" />
+      <option value="$PROJECT_DIR$/Prevoir/Bank.cs" />
+      <option value="$PROJECT_DIR$/xTest/Deposit.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1qZNX3Z7JrzvF8j1Rrkmd75R6cM" />
@@ -83,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1617283188567</updated>
-      <workItem from="1617283199134" duration="9417000" />
+      <workItem from="1617283199134" duration="10328000" />
     </task>
     <servers />
   </component>
@@ -98,12 +102,17 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -148,14 +157,14 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Prevoir/Bank.cs</url>
-          <line>81</line>
+          <url>file://$PROJECT_DIR$/Bank.kata/Bank.cs</url>
+          <line>83</line>
           <properties documentPath="$PROJECT_DIR$/Prevoir/Bank.cs" initialLine="81" containingFunctionPresentation="method 'FindAccountById'">
             <startOffsets>
-              <option value="3100" />
+              <option value="3161" />
             </startOffsets>
             <endOffsets>
-              <option value="3146" />
+              <option value="3207" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="8" />

@@ -1,10 +1,10 @@
 using System;
 using FluentAssertions;
 using Moq;
-using Prevoir;
+
 using Xunit;
 
-namespace xTest
+namespace Bank.kata
 {
     public class DepositWithMock
     {

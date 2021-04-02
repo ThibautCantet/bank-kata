@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Moq;
-using Prevoir;
+
 using Xunit;
 
-namespace xTest
+namespace Bank.kata
 {
     public class GetBalanceWithStub
     {

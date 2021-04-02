@@ -1,11 +1,11 @@
 using System;
 using FluentAssertions;
-using Prevoir;
+
 using Xunit;
 
-namespace xTest
+namespace Bank.kata
 {
-    public class Deposit
+    public class Withdraw
     {
         private static readonly InMemoryAccountRepository InMemoryAccountRepository = new();
 
@@ -13,7 +13,7 @@ namespace xTest
         private readonly Bank _bank;
         private readonly AccountId _accountId;
 
-        public Deposit()
+        public Withdraw()
         {
             _accountId = new AccountId();
             var account = new Account(_accountId);
@@ -22,26 +22,27 @@ namespace xTest
             InMemoryAccountRepository.Add(account);
         }
 
+
         [Fact]
         private void Should_add_movement_with_deposited_amount_equal_to_500()
         {
-            float depositedAmount = 500f;
+            float withdrawnAmount = 500f;
 
-            _bank.Deposit(_accountId, depositedAmount, _time);
+             _bank.Withdraw(_accountId, withdrawnAmount, _time);
 
-            Movement expectedMovement = new Movement(_time, depositedAmount);
+            Movement expectedMovement = new Movement(_time, -withdrawnAmount);
             InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
                 .BeEquivalentTo(expectedMovement);
         }
 
         [Fact]
-        private void Should_add_movement_with_deposited_amount_equal_to_600()
+        private void Should_add_movement_with_withdrawn_amount_equal_to_600()
         {
-            float depositedAmount = 600f;
+            float withdrawnAmount = 600f;
 
-            _bank.Deposit(_accountId, depositedAmount, _time);
+             _bank.Withdraw(_accountId, withdrawnAmount, _time);
 
-            Movement expectedMovement = new Movement(_time, depositedAmount);
+            Movement expectedMovement = new Movement(_time, -withdrawnAmount);
             InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
                 .BeEquivalentTo(expectedMovement);
         }
@@ -49,7 +50,7 @@ namespace xTest
         [Fact]
         private void Should_throw_exception_when_amount_is_negative()
         {
-            var exception = Assert.Throws<Exception>(() => _bank.Deposit(_accountId, -600f, _time));
+            var exception = Assert.Throws<Exception>(() => _bank.Withdraw(_accountId, -600f, _time));
 
             Assert.Contains("Negative amount", exception.Message);
         }
@@ -57,7 +58,7 @@ namespace xTest
         [Fact]
         private void Should_throw_exception_when_amount_is_null()
         {
-            var exception = Assert.Throws<Exception>(() => _bank.Deposit(_accountId, null, _time));
+            var exception = Assert.Throws<Exception>(() => _bank.Withdraw(_accountId, null, _time));
 
             Assert.Contains("Null amount", exception.Message);
         }
@@ -65,16 +66,9 @@ namespace xTest
         [Fact]
         private void Should_throw_exception_when_accountId_is_null()
         {
-            var exception = Assert.Throws<Exception>(() => _bank.Deposit(null, 10f, _time));
+            var exception = Assert.Throws<Exception>(() => _bank.Withdraw(null, 600f, _time));
 
             Assert.Contains("Null account id", exception.Message);
-        }
-        
-        [Fact]
-        private void Should_throw_exception_when_accountId_doesnt_exist() {
-            var exception = Assert.Throws<Exception>(() => _bank.Deposit(new AccountId(), 10f, _time));
-
-            Assert.Contains("Account id doesn't exist", exception.Message);
         }
     }
 }

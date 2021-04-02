@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevoir", "Prevoir\Prevoir.csproj", "{580F56B2-A9B4-4031-8E6C-1DD554264E13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.kata", "Bank.kata\Bank.kata.csproj", "{580F56B2-A9B4-4031-8E6C-1DD554264E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xTest", "xTest\xTest.csproj", "{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank.kata.xTest", "Bank.kata.xTest\Bank.kata.xTest.csproj", "{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

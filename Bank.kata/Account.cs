@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Prevoir
+namespace Bank.kata
 {
     public class Account
     {
