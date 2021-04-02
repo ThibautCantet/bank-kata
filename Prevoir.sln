@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prevoir", "Prevoir\Prevoir.csproj", "{580F56B2-A9B4-4031-8E6C-1DD554264E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xTest", "xTest\xTest.csproj", "{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{580F56B2-A9B4-4031-8E6C-1DD554264E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580F56B2-A9B4-4031-8E6C-1DD554264E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580F56B2-A9B4-4031-8E6C-1DD554264E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580F56B2-A9B4-4031-8E6C-1DD554264E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD73A0CA-7846-40D4-BD44-48D99AD3D7FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
