@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Prevoir
 {
-    public class InMemoryAccountRepository: AccountRepository
+    public class InMemoryAccountRepository: IAccountRepository
     {
         public InMemoryAccountRepository()
         {

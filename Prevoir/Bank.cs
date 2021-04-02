@@ -6,9 +6,9 @@ namespace Prevoir
 {
     public class Bank
     {
-        private readonly AccountRepository _accountRepository;
+        private readonly IAccountRepository _accountRepository;
 
-        public Bank(AccountRepository accountRepository)
+        public Bank(IAccountRepository accountRepository)
         {
             _accountRepository = accountRepository;
         }

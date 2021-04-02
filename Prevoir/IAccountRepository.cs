@@ -1,6 +1,6 @@
 namespace Prevoir
 {
-    public interface AccountRepository
+    public interface IAccountRepository
     {
         Account FindById(AccountId accountId);
 
