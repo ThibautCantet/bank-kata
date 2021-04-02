@@ -31,7 +31,7 @@ namespace xTest
              _bank.Withdraw(_accountId, withdrawnAmount, _time);
 
             Movement expectedMovement = new Movement(_time, -withdrawnAmount);
-            InMemoryAccountRepository.UserBalance[_accountId].GetAllMovements().Should()
+            InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
                 .BeEquivalentTo(expectedMovement);
         }
 
@@ -43,7 +43,7 @@ namespace xTest
              _bank.Withdraw(_accountId, withdrawnAmount, _time);
 
             Movement expectedMovement = new Movement(_time, -withdrawnAmount);
-            InMemoryAccountRepository.UserBalance[_accountId].GetAllMovements().Should()
+            InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
                 .BeEquivalentTo(expectedMovement);
         }
 

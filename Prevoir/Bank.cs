@@ -16,7 +16,7 @@ namespace Prevoir
         public float GetBalance(AccountId accountId)
         {
             Account account = FindAccountById(accountId);
-            return account.GetAllMovements()
+            return account.Movements
                 .Aggregate(0f, (acc, x) => acc + x.Amount);
         }
 
@@ -37,6 +37,8 @@ namespace Prevoir
             }
             Movement movement = new Movement(time, depositedAmount.Value);
             account.Add(movement);
+            
+            _accountRepository.Save(account);
         }
 
         public void Withdraw(AccountId accountId, float? withdrawnAmount, DateTime dateTime) {
@@ -59,8 +61,8 @@ namespace Prevoir
 
         public String PrintStatement(AccountId accountId) {
             Account account = FindAccountById(accountId);
-            String lines = account.GetAllMovements().Aggregate(
-                "", (s1, s2) =>s1 + "\n" + BuildCurrentBalance(s2, account.GetAllMovements()));
+            String lines = account.Movements.Aggregate(
+                "", (s1, s2) =>s1 + "\n" + BuildCurrentBalance(s2, account.Movements));
 
             return "Date        Amount  Balance" + lines;
         }

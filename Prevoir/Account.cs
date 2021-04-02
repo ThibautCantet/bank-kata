@@ -4,8 +4,12 @@ namespace Prevoir
 {
     public class Account
     {
-        public List<Movement> Movements { get; }
+        public virtual List<Movement> Movements { get; }
         public AccountId Id { get; }
+
+        protected Account()
+        {
+        }
 
         public Account(AccountId accountId)
         {
@@ -16,17 +20,6 @@ namespace Prevoir
         public void Add(Movement movement)
         {
             Movements.Add(movement);
-        }
-
-        public float getLastMovement()
-        {
-            Movement movement = Movements[Movements.Count - 1];
-            return movement.Amount;
-        }
-
-        public List<Movement> GetAllMovements()
-        {
-            return Movements;
         }
     }
 }

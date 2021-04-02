@@ -1,7 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0f89f81a_002D73e2_002D4ca8_002D9f48_002D7904c882834b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetBalanceWithSpy" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::DD73A0CA-7846-40D4-BD44-48D99AD3D7FC::net5.0::xTest.GetBalanceWithSpy&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=48a6c3c1_002D0e89_002D41d7_002D8bf9_002D88e349c3f691/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="should_return_sum_of_all_account_movements" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/thibautcantet/Dev/prevoir/Prevoir/xTest" Presentation="&amp;lt;xTest&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8dafeec3_002D6635_002D4590_002D9e4b_002Ddff3740e2d12/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;xTest&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/Users/thibautcantet/Dev/prevoir/Prevoir/xTest" Presentation="&amp;lt;xTest&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ebae248b_002D07df_002D4eaa_002Db544_002Da423b22afae7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;xTest&amp;gt; #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/thibautcantet/Dev/prevoir/Prevoir/xTest" Presentation="&amp;lt;xTest&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

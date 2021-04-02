@@ -21,5 +21,10 @@ namespace Prevoir
         {
             UserBalance.Add(account.Id, account);
         }
+
+        public void Save(Account account)
+        {
+            UserBalance[account.Id] = account;
+        }
     }
 }

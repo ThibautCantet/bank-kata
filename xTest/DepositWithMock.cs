@@ -1,25 +1,33 @@
 using System;
 using FluentAssertions;
+using Moq;
 using Prevoir;
 using Xunit;
 
 namespace xTest
 {
-    public class Deposit
+    public class DepositWithMock
     {
-        private static readonly InMemoryAccountRepository InMemoryAccountRepository = new();
+        private static IAccountRepository _accountRepository;
 
         private readonly DateTime _time = DateTime.Parse("2021-04-01");
         private readonly Bank _bank;
         private readonly AccountId _accountId;
+        private Mock<IAccountRepository> _accountRepositoryMock;
+        private Account _account;
 
-        public Deposit()
+        public DepositWithMock()
         {
             _accountId = new AccountId();
-            var account = new Account(_accountId);
-            _bank = new Bank(InMemoryAccountRepository);
+            _account = new Account(_accountId);
 
-            InMemoryAccountRepository.Add(account);
+            _accountRepositoryMock = new Mock<IAccountRepository>();
+
+            _accountRepositoryMock.Setup(accountRepository => accountRepository.FindById(It.IsAny<AccountId>())).Returns(_account);
+
+            _accountRepository = _accountRepositoryMock.Object;
+            
+            _bank = new Bank(_accountRepository);
         }
 
         [Fact]
@@ -29,9 +37,7 @@ namespace xTest
 
             _bank.Deposit(_accountId, depositedAmount, _time);
 
-            Movement expectedMovement = new Movement(_time, depositedAmount);
-            InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
-                .BeEquivalentTo(expectedMovement);
+            _accountRepositoryMock.Verify(x => x.Save(_account));
         }
 
         [Fact]
@@ -41,9 +47,7 @@ namespace xTest
 
             _bank.Deposit(_accountId, depositedAmount, _time);
 
-            Movement expectedMovement = new Movement(_time, depositedAmount);
-            InMemoryAccountRepository.UserBalance[_accountId].Movements.Should()
-                .BeEquivalentTo(expectedMovement);
+            _accountRepositoryMock.Verify(x => x.Save(_account));
         }
 
         [Fact]
@@ -72,6 +76,8 @@ namespace xTest
         
         [Fact]
         private void Should_throw_exception_when_accountId_doesnt_exist() {
+            _accountRepositoryMock.Setup(accountRepository => accountRepository.FindById(It.IsAny<AccountId>())).Returns((Account) null);
+            
             var exception = Assert.Throws<Exception>(() => _bank.Deposit(new AccountId(), 10f, _time));
 
             Assert.Contains("Account id doesn't exist", exception.Message);

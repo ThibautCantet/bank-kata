@@ -5,5 +5,6 @@ namespace Prevoir
         Account FindById(AccountId accountId);
 
         void Add(Account account);
+        void Save(Account account);
     }
 }
